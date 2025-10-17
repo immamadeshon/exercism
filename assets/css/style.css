@@ -1,0 +1,21 @@
+.grid-container{
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
+   gap: 10px;
+
+}
+.item{
+   background-color: blue;
+   padding: 20px;
+   text-align: center;
+
+}
+.item1{
+   order: 2;
+}
+.item2{
+   order: 1;
+}
+.item3{
+   order: 3;
+}
