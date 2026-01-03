@@ -35,3 +35,27 @@ export function isPangram(sentence) {
   const unique = new Set(letters);
   return unique.size === 26;
 }
+
+// Pascal's Triangle...
+
+export const rows = (count) => {
+  if (count === 0) {
+    return [];
+  }
+  
+  const triangle = [[1]];
+  
+  for (let row = 1; row < count; row++) {
+    const prevRow = triangle[row - 1];
+    const newRow = [1]; 
+    
+    for (let col = 1; col < row; col++) {
+      newRow.push(prevRow[col - 1] + prevRow[col]);
+    }
+    
+    newRow.push(1); 
+    triangle.push(newRow);
+  }
+  
+  return triangle;
+};
