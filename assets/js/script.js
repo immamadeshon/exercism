@@ -68,3 +68,25 @@ export const COLORS = [
   'black', 'brown', 'red', 'orange', 'yellow','green', 'blue', 'violet', 'grey', 'white',
 ];
 
+// Sum of Multiples...
+
+export function sum(items, level) {
+    const multiples = new Set();
+
+    for (let number = 1; number < level; number++) {
+        for (const item of items) {
+            if (item !== 0 && number % item === 0) {
+                multiples.add(number);
+                break;
+            }
+        }
+    }
+
+    let total = 0;
+
+    for (const number of multiples) {
+        total += number;
+    }
+
+    return total;
+}
