@@ -90,3 +90,48 @@ export function sum(items, level) {
 
     return total;
 }
+
+// ETL
+
+export const transform = (old) => {
+  const result = {};
+  for (const [score, letters] of Object.entries(old)){
+    for (const letter of letters) {
+      result[letter.toLowerCase()] = Number(score);
+    }
+    }
+  return result;
+};
+
+// Grade School 
+
+export class GradeSchool {
+  constructor() {
+    this.students = new Map();
+  }
+  
+  add(name, grade) {
+    if (this.students.has(name)) {
+      return false;
+    }
+    this.students.set(name, grade);
+    return true
+  }
+  
+  roster() {
+    return [...this.students.entries()]
+    .sort((a, b) => {
+      const [nameA, gradeA] = a;
+      const [nameB, gradeB] = b;
+      return gradeA - gradeB || nameA.localeCompare(nameB);
+    })
+    .map(([name]) => name);
+  }
+  
+  grade(n) {
+    return [...this.students.entries()]
+    .filter(([name, grade]) => grade === n)
+    .map(([name]) => name)
+    .sort();
+  }
+}
